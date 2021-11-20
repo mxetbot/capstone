@@ -257,10 +257,10 @@ if __name__ == "__main__":
         close_state1 = 0
         close_state2 = 0
         close_state3 = 0
-
+        endloop = 1
              # while close_state1 & close_state2 & close_state3 == 0:
              #needs to constantly be checking
-        while ((close_state1 & close_state2 == 0) or (close_state1 & close_state3 == 0) or (close_state2 & close_state3 ==0)):
+        while(endloop != 0):
             #time.sleep(SAMPLE_TIME)
             pw = p.pulse_width()             #ultrasonic
             pwi = (pw+.5)/147
@@ -290,6 +290,17 @@ if __name__ == "__main__":
                 pwm.ChangeDutyCycle(rightmotor)
                 pwm2.ChangeDutyCycle(leftmotor)
                 print("checkstate 3 is active")
+            
+            if (close_state1 & close_state2 & close_state3 == 1):
+                endloop -=1
+                print("endloop value = " + endloop)
+            elif(close_state1 & close_state2 == 1) or (close_state1 & close_state3 == 1) or (close_state2 & close_state3 == 1):
+                endloop -=1
+                print("endloop value = " + endloop)
+            else:
+                print("endloop value = " + endloop)
+                   
+        print(close_state1, close_state2, close_state3)
                 
         pwm.ChangeDutyCycle(0)                  # stop PWM
         pwm2.ChangeDutyCycle(0)              # stop PWM
