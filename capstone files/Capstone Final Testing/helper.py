@@ -468,12 +468,18 @@ def checkstate2(sensor, sensor2, sensor3, counter):
     
     if(close_state1 == 1 and close_state2 == 1 and close_state3 ==1):
         counter -= 1
-    if close_state1 == 1:
-        print(close_state1)
-    elif close_state2 == 1:
-        print(close_state2)
-    elif close_state3 == 1:
-        print(close_state3)
+        print("counter value = " + counter)
+    elif(close_state1 & close_state2 == 1) or (close_state1 & close_state3 == 1) or (close_state2 & close_state3 == 1):
+        counter -=1
+        print("counter value = " + counter)
+    else:
+        print("counter value = " + counter)
+    # if close_state1 == 1:
+    #     print(close_state1)
+    # elif close_state2 == 1:
+    #     print(close_state2)
+    # elif close_state3 == 1:
+    #     print(close_state3)
 
     return(curr_sensor1, curr_sensor2, curr_sensor3, counter) #this manages the right IR sensor inputs
 

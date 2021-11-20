@@ -242,10 +242,10 @@ if __name__ == "__main__":
         #initialize the motor with higher pwm values to start off the robot with weight
         pwm.ChangeDutyCycle(60)
         pwm2.ChangeDutyCycle(40)
-
+        endloop = 1
       #this portion of the code paths from the store to the general curbside location
              #needs to constantly be checking
-        while((close_state1 & close_state2 == 0) or (close_state1 & close_state3 == 0) or (close_state2 & close_state3 ==0)):
+        while(endloop != 0):
         #setting up ultrasonics
         #ultrasonic pwi=Right sensor, pwi2=Left sensor, pwi3=Middle Sensor
             #time.sleep(SAMPLE_TIME)
@@ -276,10 +276,20 @@ if __name__ == "__main__":
             #needs to constantly be pathfinding until reaches endstate
                 leftmotor, rightmotor, prev_sensor1, prev_sensor2, prev_sensor3 = statemachine(curr_sensor1, curr_sensor2, curr_sensor3, prev_sensor1, prev_sensor2, prev_sensor3)
 
+            
             #Control motor from pathfinding values
                 pwm.ChangeDutyCycle(rightmotor)
                 pwm2.ChangeDutyCycle(leftmotor)
                 print("checkstate 1 is active")
+
+            if (close_state1 & close_state2 & close_state3 == 1):
+                endloop -=1
+                print("endloop value = " + endloop)
+            elif(close_state1 & close_state2 == 1) or (close_state1 & close_state3 == 1) or (close_state2 & close_state3 == 1):
+                endloop -=1
+                print("endloop value = " + endloop)
+            else:
+                print("endloop value = " + endloop)
                    
         print(close_state1, close_state2, close_state3)
             #this portion of the code paths to the correct curbside position marker once its at the general curbside location
