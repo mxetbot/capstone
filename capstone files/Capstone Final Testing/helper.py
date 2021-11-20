@@ -5,7 +5,7 @@
 #updated 11/13/2021 7:30PM-
 #updated 11/13 8:15pm - new state machines for loaded and unloaded cart
 #   rewrote collision avoidance function to stop motors within function
-#   and to just be called 
+#   and to just be called
 
 import read_PWM_functions
 import time
@@ -465,7 +465,7 @@ def checkstate2(sensor, sensor2, sensor3, counter):
     ("/n")
     print(curr_sensor3)
     #time.sleep(5.0)
-    
+
     if(close_state1 == 1 and close_state2 == 1 and close_state3 ==1):
         counter -= 1
         print("counter value = " + counter)
@@ -704,7 +704,7 @@ def checkstate3(sensor, sensor2, sensor3):
     ("/n")
     print(curr_sensor3)
     #time.sleep(5.0)
-
+    print(blue1, blue2, blue3)
     return(curr_sensor1, curr_sensor2, curr_sensor3, close_state1, close_state2, close_state3) #this manages the middle IR sensor inputs
 
 
@@ -713,7 +713,7 @@ def checkstate3(sensor, sensor2, sensor3):
 
 
 def statemachine(curr_sensor1, curr_sensor2, curr_sensor3, prev_sensor1, prev_sensor2, prev_sensor3): #this takes the sensor readings, and pathfinds
-    
+
     if(curr_sensor1 == 0 and curr_sensor2 == 0 and curr_sensor3 == 0):
     #if 000 do not update previous state with this value otherwise its REALLY lost
     #check previous state
@@ -756,8 +756,8 @@ def statemachine(curr_sensor1, curr_sensor2, curr_sensor3, prev_sensor1, prev_se
                 # return(48,50, prev_sensor1, prev_sensor2, prev_sensor3)
         else:
             leftmotor = 54
-            rightmotor = 46            
-        
+            rightmotor = 46
+
     else:
         prev_sensor1 = curr_sensor1
         prev_sensor2 = curr_sensor2
@@ -826,7 +826,7 @@ def statemachine(curr_sensor1, curr_sensor2, curr_sensor3, prev_sensor1, prev_se
     #check to see if the cart has reached the end point
 
 def statemachine2(curr_sensor1, curr_sensor2, curr_sensor3, prev_sensor1, prev_sensor2, prev_sensor3): #this takes the sensor readings, and pathfinds
-    
+
     if(curr_sensor1 == 0 and curr_sensor2 == 0 and curr_sensor3 == 0):
     #if 000 do not update previous state with this value otherwise its REALLY lost
     #check previous state
@@ -869,8 +869,8 @@ def statemachine2(curr_sensor1, curr_sensor2, curr_sensor3, prev_sensor1, prev_s
                 # return(48,50, prev_sensor1, prev_sensor2, prev_sensor3)
         else:
             leftmotor = 54
-            rightmotor = 46            
-        
+            rightmotor = 46
+
     else:
         prev_sensor1 = curr_sensor1
         prev_sensor2 = curr_sensor2
@@ -942,8 +942,8 @@ def statemachine2(curr_sensor1, curr_sensor2, curr_sensor3, prev_sensor1, prev_s
 
 
 def collision_avoidance(pwi,pwi2,pwi3):
-    
-    
+
+
     left_motor = 0
     right_motor = 0
     if(pwi <= 15):
@@ -953,14 +953,14 @@ def collision_avoidance(pwi,pwi2,pwi3):
     elif(pwi3 <= 15):
         print("Middle Sensor = inches={}".format(pwi3))
 
- 
-        
+
+
     return(left_motor, right_motor)
 
 #statemachine3 is the file for motors on carpet ---- do not use when testing outside
 
 def statemachine3(curr_sensor1, curr_sensor2, curr_sensor3, prev_sensor1, prev_sensor2, prev_sensor3): #this takes the sensor readings, and pathfinds
-    
+
     if(curr_sensor1 == 0 and curr_sensor2 == 0 and curr_sensor3 == 0):
     #if 000 do not update previous state with this value otherwise its REALLY lost
     #check previous state
@@ -1003,8 +1003,8 @@ def statemachine3(curr_sensor1, curr_sensor2, curr_sensor3, prev_sensor1, prev_s
                 # return(48,50, prev_sensor1, prev_sensor2, prev_sensor3)
         else:
             leftmotor = 55
-            rightmotor = 45            
-        
+            rightmotor = 45
+
     else:
         prev_sensor1 = curr_sensor1
         prev_sensor2 = curr_sensor2
