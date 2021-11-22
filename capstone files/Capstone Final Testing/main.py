@@ -90,21 +90,21 @@ class Employee_Class(QMainWindow):
             if pressed == "Clear":
                 self.displaylabel.setText("")
 
-            elif pressed == "Enter": 
-                self.displaylabel.setText(f'{self.LettercomboBox.currentText()}{self.displaylabel.text()}')  
-                
+            elif pressed == "Enter":
+                self.displaylabel.setText(f'{self.LettercomboBox.currentText()}{self.displaylabel.text()}')
+
                 self.customer_location = self.displaylabel.text()
 
                 #printlocation(self.curbsideposition)       #used to call the function in main file which takes string and prints the customer location
 
 
                 #return self.customer_location
-                
+
             else:
                 self.displaylabel.setText(f'{self.displaylabel.text()}{pressed}')
 
     def go_page2(self):
-        
+
         if(self.customer_location == "A865"):
             self.curbsideposition = 1
             pathfinding(self.curbsideposition)
@@ -163,24 +163,24 @@ class Employee_Class(QMainWindow):
             self.displaylabel.setText("")
 
 
-        
+
         # countdown(10)
 
-        
+
 class Customer_Class(QMainWindow):
     def __init__(self):
-        
+
         super(Customer_Class, self).__init__()
         loadUi("customerUI.ui", self)
         self.completionButton.clicked.connect(self.go_page1)
 
         self.extensionButton.clicked.connect(self.extend_timer)
-        
-        
-        # self.Deliverylabel.setText(customer_location)  
+
+
+        # self.Deliverylabel.setText(customer_location)
     def timer_start(self):
         self.time_left_int = DURATION_INT
-        
+
 
         self.my_qtimer = QtCore.QTimer(self)
         self.my_qtimer.timeout.connect(self.timer_timeout)
@@ -205,7 +205,7 @@ class Customer_Class(QMainWindow):
 
     def  extend_timer(self):
          self.time_left_int += 60
-           
+
 
     def go_page1(self):
         self.my_qtimer.stop()
@@ -258,7 +258,7 @@ if __name__ == "__main__":
 #             print("Right Sensor = inches={}".format(pwi))
 #             print("Left Sensor = inches={}".format(pwi2))
 #             print("Middle Sensor = inches={}".format(pwi3))
-        
+
             if pwi <= 0 or pwi2 <= 0 or pwi3 <= 0: #collision avoidance
                 leftmotor, rightmotor = collision_avoidance(pwi, pwi2, pwi3)
                 if(pwi <= 0):
@@ -280,20 +280,20 @@ if __name__ == "__main__":
                 pwm.ChangeDutyCycle(rightmotor)
                 pwm2.ChangeDutyCycle(leftmotor)
                 print("checkstate 1 is active")
-                   
+
         print(close_state1, close_state2, close_state3)
             #this portion of the code paths to the correct curbside position marker once its at the general curbside location
-        
+
         prev_sensor1 = 0
         prev_sensor2 = 1
         prev_sensor3 = 0
-        
+
         close_state1 = 0
         close_state2 = 0
         close_state3 = 0
-        
-        pwm.ChangeDutyCycle(54)
-        pwm2.ChangeDutyCycle(46)
+
+        pwm.ChangeDutyCycle(46)
+        pwm2.ChangeDutyCycle(54)
 
         while(counter != 0):
             #time.sleep(SAMPLE_TIME)
@@ -303,8 +303,8 @@ if __name__ == "__main__":
             pwi2 = (pw2+.5)/147
             pw3 = p3.pulse_width()           #ultrasonic 3
             pwi3 = (pw3+.5)/147
-            
-                
+
+
             if pwi <= 0 or pwi2 <= 0 or pwi3 <= 0:
                 #leftmotor, rightmotor = collision_avoidance(pwi, pwi2, pwi3)
                 if(pwi <= 0):
@@ -316,17 +316,17 @@ if __name__ == "__main__":
                 pwm.ChangeDutyCycle(0)                  # stop PWM
                 pwm2.ChangeDutyCycle(0)                 # stop PWM                 # stop PWM
                 time.sleep(1)
-                
+
             else:
                 curr_sensor1, curr_sensor2, curr_sensor3, counter = checkstate2(sensor, sensor2, sensor3, counter)
-                
+
 
                 leftmotor, rightmotor, prev_sensor1, prev_sensor2, prev_sensor3 = statemachine(curr_sensor1, curr_sensor2, curr_sensor3, prev_sensor1, prev_sensor2, prev_sensor3)
 
                 pwm.ChangeDutyCycle(rightmotor)
                 pwm2.ChangeDutyCycle(leftmotor)
                 print("checkstate 2 is active")
-        
+
         print("finished state 2")
         print("finished state 2")
         print("finished state 2")
@@ -368,7 +368,7 @@ if __name__ == "__main__":
             pw3 = p3.pulse_width()           #ultrasonic 3
             pwi3 = (pw3+.5)/147
 
-            
+
             if pwi <= 0 or pwi2 <= 0 or pwi3 <= 0:
                 #leftmotor, rightmotor = collision_avoidance(pwi, pwi2, pwi3)
                 if(pwi <= 0):
@@ -389,10 +389,10 @@ if __name__ == "__main__":
                 pwm.ChangeDutyCycle(rightmotor)
                 pwm2.ChangeDutyCycle(leftmotor)
                 print("checkstate 3 is active")
-                
+
         pwm.ChangeDutyCycle(0)                  # stop PWM
         pwm2.ChangeDutyCycle(0)              # stop PWM
-        
+
         print(curbsideposition)
 
     # needs to constantly be checking for obstacles
@@ -412,7 +412,7 @@ if __name__ == "__main__":
             pw3 = p3.pulse_width()           #ultrasonic 3
             pwi3 = (pw3+.5)/147
 
-            
+
             if pwi <= 15 or pwi2 <= 0 or pwi3 <= 0:
                 #leftmotor, rightmotor = collision_avoidance(pwi, pwi2, pwi3)
                 if(pwi <= 15):
@@ -434,7 +434,7 @@ if __name__ == "__main__":
                 pwm2.ChangeDutyCycle(leftmotor)
                 print("running")
 
-        #slow down to a stop 
+        #slow down to a stop
         pwm.ChangeDutyCycle(52)
         pwm2.ChangeDutyCycle(48)
 
@@ -454,4 +454,4 @@ if __name__ == "__main__":
     try:
         sys.exit(app.exec_())
     except:
-        print("Exiting") 
+        print("Exiting")
