@@ -242,10 +242,10 @@ if __name__ == "__main__":
         #initialize the motor with higher pwm values to start off the robot with weight
         pwm.ChangeDutyCycle(60)
         pwm2.ChangeDutyCycle(40)
-
+        endloop = 1
       #this portion of the code paths from the store to the general curbside location
              #needs to constantly be checking
-        while((close_state1 & close_state2 == 0) or (close_state1 & close_state3 == 0) or (close_state2 & close_state3 ==0)):
+        while(endloop != 0):
         #setting up ultrasonics
         #ultrasonic pwi=Right sensor, pwi2=Left sensor, pwi3=Middle Sensor
             #time.sleep(SAMPLE_TIME)
@@ -280,6 +280,15 @@ if __name__ == "__main__":
                 pwm.ChangeDutyCycle(rightmotor)
                 pwm2.ChangeDutyCycle(leftmotor)
                 print("checkstate 1 is active")
+            
+            if (close_state1 & close_state2 & close_state3 == 1):
+                endloop -=1
+                print("endloop value = ", endloop)
+            elif(close_state1 & close_state2 == 1) or (close_state1 & close_state3 == 1) or (close_state2 & close_state3 == 1):
+                endloop -=1
+                print("endloop value = ", endloop)
+            else:
+                print("endloop value = ", endloop)   
 
         print(close_state1, close_state2, close_state3)
             #this portion of the code paths to the correct curbside position marker once its at the general curbside location
@@ -349,17 +358,17 @@ if __name__ == "__main__":
         # pwm.ChangeDutyCycle()
         # pwm2.ChangeDutyCycle()
 
-        pwm.ChangeDutyCycle(0)                  # stop PWM
-        pwm2.ChangeDutyCycle(0)                 # stop PWM
+        pwm.ChangeDutyCycle(52)                  # stop PWM
+        pwm2.ChangeDutyCycle(46.75)                 # stop PWM
 
             #this portion of the code should pathfinding from the curbside beginning spot to the actual customer position aka the final destination
         close_state1 = 0
         close_state2 = 0
         close_state3 = 0
-
+        endloop = 1
              # while close_state1 & close_state2 & close_state3 == 0:
              #needs to constantly be checking
-        while ((close_state1 & close_state2 == 0) or (close_state1 & close_state3 == 0) or (close_state2 & close_state3 ==0)):
+        while(endloop != 0):
             #time.sleep(SAMPLE_TIME)
             pw = p.pulse_width()             #ultrasonic
             pwi = (pw+.5)/147
@@ -389,6 +398,15 @@ if __name__ == "__main__":
                 pwm.ChangeDutyCycle(rightmotor)
                 pwm2.ChangeDutyCycle(leftmotor)
                 print("checkstate 3 is active")
+                
+            if (close_state1 & close_state2 & close_state3 == 1):
+                endloop -=1
+                print("endloop value = ", endloop)
+            elif(close_state1 & close_state2 == 1) or (close_state1 & close_state3 == 1) or (close_state2 & close_state3 == 1):
+                endloop -=1
+                print("endloop value = ", endloop)
+            else:
+                print("endloop value = ", endloop)
 
         pwm.ChangeDutyCycle(0)                  # stop PWM
         pwm2.ChangeDutyCycle(0)              # stop PWM
@@ -455,3 +473,4 @@ if __name__ == "__main__":
         sys.exit(app.exec_())
     except:
         print("Exiting")
+
