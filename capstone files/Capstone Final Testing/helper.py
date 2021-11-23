@@ -34,7 +34,7 @@ def checkstate(sensor, sensor2, sensor3):
     r2, g2, b2, clear2 = sensor2.color_raw
     red2 = int(pow((int((r2 / clear2) * 256) / 255), 2.5) * 255)
     green2 = int((pow((int((g2 / clear2) * 256) / 255), 2.5) * 255)*1.36)
-    blue2 = int((pow((int((b2 / clear2) * 256) / 255), 2.5) * 255)*1.56)
+    blue2 = int(pow((int((b2 / clear2) * 256) / 255), 2.5) * 255)
 
         #sensor three values
     r3, g3, b3, clear3 = sensor3.color_raw
@@ -233,12 +233,7 @@ def checkstate(sensor, sensor2, sensor3):
     print(curr_sensor2)
     ("/n")
     print(curr_sensor3)
-    if close_state1 == 1:
-        print(close_state1)
-    elif close_state2 == 1:
-        print(close_state2)
-    elif close_state3 == 1:
-        print(close_state3)
+    
 
     #time.sleep(5.0)
 
@@ -258,20 +253,20 @@ def checkstate2(sensor, sensor2, sensor3, counter):
         #sensor one values
     r1, g1, b1, clear1 = sensor.color_raw
     red1 = int(pow((int((r1 / clear1) * 256) / 255), 2.5) * 255)
-    green1 = int((pow((int((g1 / clear1) * 256) / 255), 2.5) * 255)*1.36)
-    blue1 = int((pow((int((b1 / clear1) * 256) / 255), 2.5) * 255)*1.56)
+    green1 = int(pow((int((g1 / clear1) * 256) / 255), 2.5) * 255)
+    blue1 = int(pow((int((b1 / clear1) * 256) / 255), 2.5) * 255)
 
         #sensor two values
     r2, g2, b2, clear2 = sensor2.color_raw
     red2 = int(pow((int((r2 / clear2) * 256) / 255), 2.5) * 255)
-    green2 = int((pow((int((g2 / clear2) * 256) / 255), 2.5) * 255)*1.36)
-    blue2 = int((pow((int((b2 / clear2) * 256) / 255), 2.5) * 255)*1.56)
+    green2 = int(pow((int((g2 / clear2) * 256) / 255), 2.5) * 255)
+    blue2 = int(pow((int((b2 / clear2) * 256) / 255), 2.5) * 255)
 
         #sensor three values
     r3, g3, b3, clear3 = sensor3.color_raw
     red3 = int(pow((int((r3 / clear3) * 256) / 255), 2.5) * 255)
-    green3 = int((pow((int((g3 / clear3) * 256) / 255), 2.5) * 255)*1.36)
-    blue3 = int((pow((int((b3 / clear3) * 256) / 255), 2.5) * 255)*1.56)
+    green3 = int(pow((int((g3 / clear3) * 256) / 255), 2.5) * 255)
+    blue3 = int(pow((int((b3 / clear3) * 256) / 255), 2.5) * 255)
 
     color_rgb = sensor.color_rgb_bytes
     color_rgb2 = sensor2.color_rgb_bytes
@@ -468,12 +463,12 @@ def checkstate2(sensor, sensor2, sensor3, counter):
 
     if(close_state1 == 1 and close_state2 == 1 and close_state3 ==1):
         counter -= 1
-        print("counter value = " + counter)
+        print("counter value = ", counter)
     elif(close_state1 & close_state2 == 1) or (close_state1 & close_state3 == 1) or (close_state2 & close_state3 == 1):
         counter -=1
-        print("counter value = " + counter)
+        print("counter value = ", counter)
     else:
-        print("counter value = " + counter)
+        print("counter value = ", counter)
     # if close_state1 == 1:
     #     print(close_state1)
     # elif close_state2 == 1:
@@ -497,20 +492,20 @@ def checkstate3(sensor, sensor2, sensor3):
 
     r1, g1, b1, clear1 = sensor.color_raw
     red1 = int(pow((int((r1 / clear1) * 256) / 255), 2.5) * 255)
-    green1 = int((pow((int((g1 / clear1) * 256) / 255), 2.5) * 255)*1.36)
-    blue1 = int((pow((int((b1 / clear1) * 256) / 255), 2.5) * 255)*1.56)
+    green1 = int(pow((int((g1 / clear1) * 256) / 255), 2.5) * 255)
+    blue1 = int(pow((int((b1 / clear1) * 256) / 255), 2.5) * 255)
 
         #sensor two values
     r2, g2, b2, clear2 = sensor2.color_raw
     red2 = int(pow((int((r2 / clear2) * 256) / 255), 2.5) * 255)
-    green2 = int((pow((int((g2 / clear2) * 256) / 255), 2.5) * 255)*1.36)
-    blue2 = int((pow((int((b2 / clear2) * 256) / 255), 2.5) * 255)*1.56)
+    green2 = int(pow((int((g2 / clear2) * 256) / 255), 2.5) * 255)
+    blue2 = int(pow((int((b2 / clear2) * 256) / 255), 2.5) * 255)
 
         #sensor three values
     r3, g3, b3, clear3 = sensor3.color_raw
     red3 = int(pow((int((r3 / clear3) * 256) / 255), 2.5) * 255)
-    green3 = int((pow((int((g3 / clear3) * 256) / 255), 2.5) * 255)*1.36)
-    blue3 = int((pow((int((b3 / clear3) * 256) / 255), 2.5) * 255)*1.56)
+    green3 = int(pow((int((g3 / clear3) * 256) / 255), 2.5) * 255)
+    blue3 = int(pow((int((b3 / clear3) * 256) / 255), 2.5) * 255)
 
     color_rgb = sensor.color_rgb_bytes
     color_rgb2 = sensor2.color_rgb_bytes
@@ -1165,3 +1160,4 @@ def statemachine3(curr_sensor1, curr_sensor2, curr_sensor3, prev_sensor1, prev_s
 #                 #   Cancels the reader and releases resources.
 #                 #   """
 #             self._cb.cancel()
+
