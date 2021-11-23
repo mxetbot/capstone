@@ -40,7 +40,7 @@ def checkstate(sensor, sensor2, sensor3):
     r3, g3, b3, clear3 = sensor3.color_raw
     red3 = int(pow((int((r3 / clear3) * 256) / 255), 2.5) * 255)
     green3 = int((pow((int((g3 / clear3) * 256) / 255), 2.5) * 255)*1.36)
-    blue3 = int()(pow((int((b3 / clear3) * 256) / 255), 2.5) * 255)*1.56)
+    blue3 = int((pow((int((b3 / clear3) * 256) / 255), 2.5) * 255)*1.56)
 
     color_rgb = sensor.color_rgb_bytes
     color_rgb2 = sensor2.color_rgb_bytes
@@ -259,7 +259,7 @@ def checkstate2(sensor, sensor2, sensor3, counter):
     r1, g1, b1, clear1 = sensor.color_raw
     red1 = int(pow((int((r1 / clear1) * 256) / 255), 2.5) * 255)
     green1 = int((pow((int((g1 / clear1) * 256) / 255), 2.5) * 255)*1.36)
-    blue1 = int((pow((int((b1 / clear1) * 256) / 255), 2.5) * 255)1.56)
+    blue1 = int((pow((int((b1 / clear1) * 256) / 255), 2.5) * 255)*1.56)
 
         #sensor two values
     r2, g2, b2, clear2 = sensor2.color_raw
