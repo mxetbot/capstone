@@ -243,6 +243,7 @@ if __name__ == "__main__":
         pwm.ChangeDutyCycle(60)
         pwm2.ChangeDutyCycle(40)
         endloop = 1
+        redcounter = 0
       #this portion of the code paths from the store to the general curbside location
              #needs to constantly be checking
         while(endloop != 0):
@@ -280,15 +281,21 @@ if __name__ == "__main__":
                 pwm.ChangeDutyCycle(rightmotor)
                 pwm2.ChangeDutyCycle(leftmotor)
                 print("checkstate 1 is active")
-            
-            if (close_state1 & close_state2 & close_state3 == 1):
-                endloop -=1
-                print("endloop value = ", endloop)
-            elif(close_state1 & close_state2 == 1) or (close_state1 & close_state3 == 1) or (close_state2 & close_state3 == 1):
-                endloop -=1
-                print("endloop value = ", endloop)
+                     
+            if(redcounter == 0):
+                if(close_state1 == 1 and close_state2 == 1 and close_state3 ==1):
+                    counter -= 1
+                    redcounter +=1
+                    print("counter value = ", counter)
+                elif(close_state1 & close_state2 == 1) or (close_state1 & close_state3 == 1) or (close_state2 & close_state3 == 1):
+                    counter -=1
+                    redcounter +=1
+                    print("counter value = ", counter)
+                else:
+                    print("counter value = ", counter)
             else:
-                print("endloop value = ", endloop)   
+                if(curr_sensor1 or curr_sensor2 or curr_sensor3 == 1):
+                    redcounter -= 1
 
         print(close_state1, close_state2, close_state3)
             #this portion of the code paths to the correct curbside position marker once its at the general curbside location
@@ -327,10 +334,10 @@ if __name__ == "__main__":
                 time.sleep(1)
 
             else:
-                curr_sensor1, curr_sensor2, curr_sensor3, counter = checkstate2(sensor, sensor2, sensor3, counter)
+                curr_sensor1, curr_sensor2, curr_sensor3, counter, redcounter = checkstate2(sensor, sensor2, sensor3, counter,redcounter)
 
 
-                leftmotor, rightmotor, prev_sensor1, prev_sensor2, prev_sensor3 = statemachine(curr_sensor1, curr_sensor2, curr_sensor3, prev_sensor1, prev_sensor2, prev_sensor3)
+                leftmotor, rightmotor, prev_sensor1, prev_sensor2, prev_sensor3 = statemachine3(curr_sensor1, curr_sensor2, curr_sensor3, prev_sensor1, prev_sensor2, prev_sensor3)
 
                 pwm.ChangeDutyCycle(rightmotor)
                 pwm2.ChangeDutyCycle(leftmotor)
@@ -398,15 +405,21 @@ if __name__ == "__main__":
                 pwm.ChangeDutyCycle(rightmotor)
                 pwm2.ChangeDutyCycle(leftmotor)
                 print("checkstate 3 is active")
-                
-            if (close_state1 & close_state2 & close_state3 == 1):
-                endloop -=1
-                print("endloop value = ", endloop)
-            elif(close_state1 & close_state2 == 1) or (close_state1 & close_state3 == 1) or (close_state2 & close_state3 == 1):
-                endloop -=1
-                print("endloop value = ", endloop)
+                        
+            if(redcounter == 0):
+                if(close_state1 == 1 and close_state2 == 1 and close_state3 ==1):
+                    counter -= 1
+                    redcounter +=1
+                    print("counter value = ", counter)
+                elif(close_state1 & close_state2 == 1) or (close_state1 & close_state3 == 1) or (close_state2 & close_state3 == 1):
+                    counter -=1
+                    redcounter +=1
+                    print("counter value = ", counter)
+                else:
+                    print("counter value = ", counter)
             else:
-                print("endloop value = ", endloop)
+                if(curr_sensor1 or curr_sensor2 or curr_sensor3 == 1):
+                    redcounter -= 1
 
         pwm.ChangeDutyCycle(0)                  # stop PWM
         pwm2.ChangeDutyCycle(0)              # stop PWM
