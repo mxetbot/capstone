@@ -792,7 +792,7 @@ def statemachine(curr_sensor1, curr_sensor2, curr_sensor3, prev_sensor1, prev_se
                 # pwm.ChangeDutyCycle(48)     #left motor
                 # pwm2.ChangeDutyCycle(48)               #right motor
                 leftmotor = 53
-                rightmotor = 45
+                rightmotor = 44
                 print('hardleft \n')
                 # return(48,48, prev_sensor1, prev_sensor2, prev_sensor3)
             else:
@@ -800,7 +800,7 @@ def statemachine(curr_sensor1, curr_sensor2, curr_sensor3, prev_sensor1, prev_se
                 # pwm.ChangeDutyCycle(48)     #left motor
                 # pwm2.ChangeDutyCycle(48)               #right motor
                 leftmotor = 53
-                rightmotor = 44
+                rightmotor = 45
                 print('slightleft \n')
                 # return(48,50, prev_sensor1, prev_sensor2, prev_sensor3)
 
@@ -838,7 +838,7 @@ def statemachine2(curr_sensor1, curr_sensor2, curr_sensor3, prev_sensor1, prev_s
                 #set pwm values for hard right turn
                 # pwm.ChangeDutyCycle(52)     #left motor
                 # pwm2.ChangeDutyCycle(52)    #right motor
-                leftmotor = 55
+                leftmotor = 53
                 rightmotor = 0
                 print('hard turn right lost /n')
                 # return(52,52, prev_sensor1, prev_sensor2, prev_sensor3)
@@ -846,7 +846,7 @@ def statemachine2(curr_sensor1, curr_sensor2, curr_sensor3, prev_sensor1, prev_s
             #values should be set to 011 so we should set pwm values for motors to slight right turn
                 # pwm.ChangeDutyCycle(50)         #left motor
                 # pwm2.ChangeDutyCycle(52)    #right motor
-                leftmotor = 53
+                leftmotor = 51.5
                 rightmotor = 0
                 print('slight turn right lost/n')
                 # return(50,52, prev_sensor1, prev_sensor2, prev_sensor3)
@@ -857,16 +857,16 @@ def statemachine2(curr_sensor1, curr_sensor2, curr_sensor3, prev_sensor1, prev_s
                 #set pwm values for hard left turn
                 # pwm.ChangeDutyCycle(48)     #left motor
                 # pwm2.ChangeDutyCycle(48)    #right motor
-                leftmotor = 49.5
-                rightmotor = 45
+                leftmotor = 49
+                rightmotor = 47
                 print('hardleft lost /n')
                 # return(48,48, prev_sensor1, prev_sensor2, prev_sensor3)
             else:
                 #values should be 110 so we should set the pwm values for the motors to turn slightly right
                 # pwm.ChangeDutyCycle(48)     #left motor
                 # pwm2.ChangeDutyCycle(50)    #right motor
-                leftmotor = 0
-                rightmotor = 47
+                leftmotor = 51
+                rightmotor = 48.5
                 print('slightleft lost /n')
                 # return(48,50, prev_sensor1, prev_sensor2, prev_sensor3)
         else:
@@ -884,16 +884,16 @@ def statemachine2(curr_sensor1, curr_sensor2, curr_sensor3, prev_sensor1, prev_s
                 #set pwm values for hard right turn
                 # pwm.ChangeDutyCycle(52)     #left motor
                 # pwm2.ChangeDutyCycle(52)    #right motor
-                leftmotor = 55
-                rightmotor = 0
+                leftmotor = 53
+                rightmotor = 49
                 print('hardright \n')
                 # return(52,52, prev_sensor1, prev_sensor2, prev_sensor3)
             else:
                 #values should be set to 011 so we should set pwm values for motors to slight right turn
                 # pwm.ChangeDutyCycle(50)     #left motor
                 # pwm2.ChangeDutyCycle(52)    #right motor
-                leftmotor = 53
-                rightmotor = 0
+                leftmotor = 52
+                rightmotor = 49
                 print('slightright \n')
                 # return(50,52, prev_sensor1, prev_sensor2, prev_sensor3)
 
@@ -904,16 +904,16 @@ def statemachine2(curr_sensor1, curr_sensor2, curr_sensor3, prev_sensor1, prev_s
                 #set pwm values for hard left turn
                 # pwm.ChangeDutyCycle(48)     #left motor
                 # pwm2.ChangeDutyCycle(48)               #right motor
-                leftmotor = 0
-                rightmotor = 45
+                leftmotor = 51
+                rightmotor = 47
                 print('hardleft \n')
                 # return(48,48, prev_sensor1, prev_sensor2, prev_sensor3)
             else:
             #values should be 110 so we should set the pwm values for the motors to turn slightly left
                 # pwm.ChangeDutyCycle(48)     #left motor
                 # pwm2.ChangeDutyCycle(48)               #right motor
-                leftmotor = 0
-                rightmotor = 47
+                leftmotor = 51
+                rightmotor = 48
                 print('slightleft \n')
                 # return(48,50, prev_sensor1, prev_sensor2, prev_sensor3)
 
@@ -922,8 +922,8 @@ def statemachine2(curr_sensor1, curr_sensor2, curr_sensor3, prev_sensor1, prev_s
             #set pwm values to move our robot foward
             # pwm.ChangeDutyCycle(48)     #left motor
             # pwm2.ChangeDutyCycle(52)    #right motor
-            leftmotor = 54
-            rightmotor = 46
+            leftmotor = 52
+            rightmotor = 48
             print('forwards')
             # return(48,52, prev_sensor1, prev_sensor2, prev_sensor3)
         else:
@@ -932,8 +932,8 @@ def statemachine2(curr_sensor1, curr_sensor2, curr_sensor3, prev_sensor1, prev_s
             #set pwm for motors to move straight
             # pwm.ChangeDutyCycle(48)     #left motor
             # pwm2.ChangeDutyCycle(52)    #right motor
-            leftmotor = 54
-            rightmotor = 46
+            leftmotor = 52
+            rightmotor = 48
             # return(48,52, prev_sensor1, prev_sensor2, prev_sensor3)
 
     return(leftmotor,rightmotor, prev_sensor1, prev_sensor2, prev_sensor3)
