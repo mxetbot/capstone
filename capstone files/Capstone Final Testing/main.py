@@ -194,6 +194,7 @@ class Customer_Class(QMainWindow):
         #print("here", self.time_left_int)
 
         if self.time_left_int == 0:
+            self.go_page1()
             widget.setCurrentIndex(widget.currentIndex()-1)
 
         self.update_gui()
@@ -209,8 +210,9 @@ class Customer_Class(QMainWindow):
 
     def go_page1(self):
         self.my_qtimer.stop()
+        pathfinding_back()
         widget.setCurrentIndex(widget.currentIndex()-1)
-        pathfindingback()
+        
 
 
 #gui setup here
@@ -240,8 +242,9 @@ if __name__ == "__main__":
 
 
         #initialize the motor with higher pwm values to start off the robot with weight
-        pwm.ChangeDutyCycle(60)
-        pwm2.ChangeDutyCycle(40)
+        #pwm.ChangeDutyCycle(56)
+        #pwm2.ChangeDutyCycle(44)
+        #time.sleep(.1)
         endloop = 1
         redcounter = 0
       #this portion of the code paths from the store to the general curbside location
@@ -284,15 +287,18 @@ if __name__ == "__main__":
                      
             if(redcounter == 0):
                 if(close_state1 == 1 and close_state2 == 1 and close_state3 ==1):
-                    counter -= 1
+                    endloop -= 1
                     redcounter +=1
-                    print("counter value = ", counter)
+                    print("counter value = ", endloop)
+                    print("redcounter value = ", redcounter)
                 elif(close_state1 & close_state2 == 1) or (close_state1 & close_state3 == 1) or (close_state2 & close_state3 == 1):
-                    counter -=1
+                    endloop -=1
                     redcounter +=1
-                    print("counter value = ", counter)
+                    print("counter value = ", endloop)
+                    print("redcounter value = ", redcounter)
                 else:
-                    print("counter value = ", counter)
+                    print("counter value = ", endloop)
+                    print("redcounter value = ", redcounter)
             else:
                 if(curr_sensor1 or curr_sensor2 or curr_sensor3 == 1):
                     redcounter -= 1
@@ -308,8 +314,8 @@ if __name__ == "__main__":
         close_state2 = 0
         close_state3 = 0
 
-        pwm.ChangeDutyCycle(46)
-        pwm2.ChangeDutyCycle(54)
+        pwm.ChangeDutyCycle(45)
+        pwm2.ChangeDutyCycle(55)
 
         while(counter != 0):
             #time.sleep(SAMPLE_TIME)
@@ -352,22 +358,22 @@ if __name__ == "__main__":
         print("-------------------------------------")
 
         #slow down the motor after it reaches the end state
-        pwm.ChangeDutyCycle(52)
-        pwm2.ChangeDutyCycle(48)
+#         pwm.ChangeDutyCycle(52)
+#         pwm2.ChangeDutyCycle(48)
+# 
+#         time.sleep(0.3)
 
-        time.sleep(0.3)
+        #pwm.ChangeDutyCycle(48)
+        #pwm2.ChangeDutyCycle(52)
 
-        pwm.ChangeDutyCycle(48)
-        pwm2.ChangeDutyCycle(52)
-
-        time.sleep(0.25)
+        #time.sleep(0.4)
 
         # pwm.ChangeDutyCycle()
         # pwm2.ChangeDutyCycle()
 
-        pwm.ChangeDutyCycle(52)                  # stop PWM
-        pwm2.ChangeDutyCycle(46.75)                 # stop PWM
-
+        pwm.ChangeDutyCycle(52)                  # turn left
+        pwm2.ChangeDutyCycle(45.75)                 # turn left
+        time.sleep(.25)
             #this portion of the code should pathfinding from the curbside beginning spot to the actual customer position aka the final destination
         close_state1 = 0
         close_state2 = 0
@@ -399,7 +405,7 @@ if __name__ == "__main__":
             else:
                 curr_sensor1, curr_sensor2, curr_sensor3, close_state1, close_state2, close_state3 = checkstate3(sensor, sensor2, sensor3)
         #             #needs to constantly be pathfinding until reaches endstate
-                leftmotor, rightmotor, prev_sensor1, prev_sensor2, prev_sensor3 = statemachine(curr_sensor1, curr_sensor2, curr_sensor3, prev_sensor1, prev_sensor2, prev_sensor3)
+                leftmotor, rightmotor, prev_sensor1, prev_sensor2, prev_sensor3 = statemachine3(curr_sensor1, curr_sensor2, curr_sensor3, prev_sensor1, prev_sensor2, prev_sensor3)
 
         #             #Control motor from pathfinding values
                 pwm.ChangeDutyCycle(rightmotor)
@@ -408,18 +414,30 @@ if __name__ == "__main__":
                         
             if(redcounter == 0):
                 if(close_state1 == 1 and close_state2 == 1 and close_state3 ==1):
-                    counter -= 1
+                    endloop -= 1
                     redcounter +=1
-                    print("counter value = ", counter)
+                    print("counter value = ", endloop)
+                    print("redcounter value = ", redcounter)
                 elif(close_state1 & close_state2 == 1) or (close_state1 & close_state3 == 1) or (close_state2 & close_state3 == 1):
-                    counter -=1
+                    endloop -=1
                     redcounter +=1
-                    print("counter value = ", counter)
+                    print("counter value = ", endloop)
+                    print("redcounter value = ", redcounter)
                 else:
-                    print("counter value = ", counter)
+                    print("counter value = ", endloop)
+                    print("redcounter value = ", redcounter)
             else:
                 if(curr_sensor1 or curr_sensor2 or curr_sensor3 == 1):
                     redcounter -= 1
+        print("CHECKSTATE 3 IS COMPLETE")
+        print("-----------------")
+        print("-----------------")
+        print("-----------------")
+        pwm.ChangeDutyCycle(55)
+        pwm2.ChangeDutyCycle(45)
+
+        time.sleep(.8)
+
 
         pwm.ChangeDutyCycle(0)                  # stop PWM
         pwm2.ChangeDutyCycle(0)              # stop PWM
@@ -431,7 +449,9 @@ if __name__ == "__main__":
         close_state1 = 0
         close_state2 = 0
         close_state3 = 0
-
+        prev_sensor1 = 0
+        prev_sensor2 = 0
+        prev_sensor3 = 0
     #         # while close_state1 & close_state2 & close_state3 == 0:
     #         #needs to constantly be checking
         while close_state1 & close_state2 & close_state3 == 0:
