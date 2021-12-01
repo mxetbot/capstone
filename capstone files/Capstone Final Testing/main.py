@@ -271,7 +271,7 @@ if __name__ == "__main__":
 #             print("Left Sensor = inches={}".format(pwi2))
 #             print("Middle Sensor = inches={}".format(pwi3))
 
-            if pwi <= 15 or pwi2 <= 15 or pwi3 <= 10: #collision avoidance
+            if pwi <= 10 or pwi2 <= 10 or pwi3 <= 10: #collision avoidance
                 leftmotor, rightmotor, ultrasonic_repeat, sleeptime = collision_avoidance(pwi, pwi2, pwi3, ultrasonic_repeat)
                 pwm.ChangeDutyCycle(rightmotor)
                 pwm2.ChangeDutyCycle(leftmotor)
@@ -333,7 +333,7 @@ if __name__ == "__main__":
             pwi3 = (pw3+.5)/147
 
 
-            if pwi <= 15 or pwi2 <= 15 or pwi3 <= 10: #collision avoidance
+            if pwi <= 10 or pwi2 <= 10 or pwi3 <= 10: #collision avoidance
                 leftmotor, rightmotor, ultrasonic_repeat, sleeptime = collision_avoidance(pwi, pwi2, pwi3, ultrasonic_repeat)
                 pwm.ChangeDutyCycle(rightmotor)
                 pwm2.ChangeDutyCycle(leftmotor)
@@ -392,7 +392,7 @@ if __name__ == "__main__":
             pwi3 = (pw3+.5)/147
 
 
-            if pwi <= 15 or pwi2 <= 15 or pwi3 <= 10: #collision avoidance
+            if pwi <= 10 or pwi2 <= 10 or pwi3 <= 10: #collision avoidance
                 leftmotor, rightmotor, ultrasonic_repeat, sleeptime = collision_avoidance(pwi, pwi2, pwi3, ultrasonic_repeat)
                 pwm.ChangeDutyCycle(rightmotor)
                 pwm2.ChangeDutyCycle(leftmotor)
@@ -464,7 +464,7 @@ if __name__ == "__main__":
             pwi3 = (pw3+.5)/147
 
 
-            if pwi <= 15 or pwi2 <= 15 or pwi3 <= 10: #collision avoidance
+            if pwi <= 10 or pwi2 <= 10 or pwi3 <= 10: #collision avoidance
                 leftmotor, rightmotor, ultrasonic_repeat, sleeptime = collision_avoidance(pwi, pwi2, pwi3, ultrasonic_repeat)
                 pwm.ChangeDutyCycle(rightmotor)
                 pwm2.ChangeDutyCycle(leftmotor)
@@ -473,7 +473,7 @@ if __name__ == "__main__":
                 ultrasonic_repeat = False
                 curr_sensor1, curr_sensor2, curr_sensor3, close_state1, close_state2, close_state3 = checkstateBlue(sensor, sensor2, sensor3)
                 #needs to constantly be pathfinding until reaches endstate
-                leftmotor, rightmotor, prev_sensor1, prev_sensor2, prev_sensor3 = statemachine2(curr_sensor1, curr_sensor2, curr_sensor3, prev_sensor1, prev_sensor2, prev_sensor3)
+                leftmotor, rightmotor, prev_sensor1, prev_sensor2, prev_sensor3 = statemachinepathbacksecstage(curr_sensor1, curr_sensor2, curr_sensor3, prev_sensor1, prev_sensor2, prev_sensor3)
 
     #             #Control motor from pathfinding values
                 pwm.ChangeDutyCycle(rightmotor)
@@ -510,6 +510,10 @@ if __name__ == "__main__":
         close_state2 = 0
         close_state3 = 0
         
+        pwm.ChangeDutyCycle(52.25)
+        pwm2.ChangeDutyCycle(47.75) 
+        time.sleep(.5)
+        
         endloop = 1
         while(endloop != 0):
             #time.sleep(SAMPLE_TIME)
@@ -521,7 +525,7 @@ if __name__ == "__main__":
             pwi3 = (pw3+.5)/147
 
 
-            if pwi <= 15 or pwi2 <= 15 or pwi3 <= 10: #collision avoidance
+            if pwi <= 10 or pwi2 <= 10 or pwi3 <= 10: #collision avoidance
                 leftmotor, rightmotor, ultrasonic_repeat, sleeptime = collision_avoidance(pwi, pwi2, pwi3, ultrasonic_repeat)
                 pwm.ChangeDutyCycle(rightmotor)
                 pwm2.ChangeDutyCycle(leftmotor)
