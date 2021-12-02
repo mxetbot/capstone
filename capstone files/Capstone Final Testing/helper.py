@@ -1035,7 +1035,11 @@ def statemachine(curr_sensor1, curr_sensor2, curr_sensor3, prev_sensor1, prev_se
         else:
             leftmotor = 55
             rightmotor = 45
-
+            print('lost-lost?', curr_sensor1, curr_sensor2, curr_sensor3)
+    elif(curr_sensor1 == 1 and curr_sensor2 == 0 and curr_sensor3 == 1 or curr_sensor1 == 1 and curr_sensor2 == 1 and curr_sensor3 == 1):
+        leftmotor = 55
+        rightmotor = 45
+        print('temp foward state')
     else:
         prev_sensor1 = curr_sensor1
         prev_sensor2 = curr_sensor2
@@ -1097,6 +1101,7 @@ def statemachine(curr_sensor1, curr_sensor2, curr_sensor3, prev_sensor1, prev_se
             # pwm2.ChangeDutyCycle(52)    #right motor
             leftmotor = 55
             rightmotor = 45
+            print('lost?', curr_sensor1, curr_sensor2, curr_sensor3)
             # return(48,52, prev_sensor1, prev_sensor2, prev_sensor3)
 
     return(leftmotor,rightmotor, prev_sensor1, prev_sensor2, prev_sensor3)
@@ -1148,7 +1153,12 @@ def statemachine2(curr_sensor1, curr_sensor2, curr_sensor3, prev_sensor1, prev_s
         else:
             leftmotor = 51
             rightmotor = 49
+            print('lost-lost?', curr_sensor1, curr_sensor2, curr_sensor3)
 
+    elif(curr_sensor1 == 1 and curr_sensor2 == 0 and curr_sensor3 == 1 or curr_sensor1 == 1 and curr_sensor2 == 1 and curr_sensor3 == 1):
+        leftmotor = 55
+        rightmotor = 45
+        print('temp foward state')
     else:
         prev_sensor1 = curr_sensor1
         prev_sensor2 = curr_sensor2
@@ -1210,6 +1220,7 @@ def statemachine2(curr_sensor1, curr_sensor2, curr_sensor3, prev_sensor1, prev_s
             # pwm2.ChangeDutyCycle(52)    #right motor
             leftmotor = 51.25
             rightmotor = 48.75
+            print('lost?', curr_sensor1, curr_sensor2, curr_sensor3)
             # return(48,52, prev_sensor1, prev_sensor2, prev_sensor3)
 
     return(leftmotor,rightmotor, prev_sensor1, prev_sensor2, prev_sensor3)
@@ -1297,7 +1308,12 @@ def statemachine3(curr_sensor1, curr_sensor2, curr_sensor3, prev_sensor1, prev_s
         else:
             leftmotor = 52
             rightmotor = 48
+            print('lost - lost?', curr_sensor1, curr_sensor2, curr_sensor3)
 
+    elif(curr_sensor1 == 1 and curr_sensor2 == 0 and curr_sensor3 == 1 or curr_sensor1 == 1 and curr_sensor2 == 1 and curr_sensor3 == 1):
+        leftmotor = 55
+        rightmotor = 45
+        print('temp foward state')
     else:
         prev_sensor1 = curr_sensor1
         prev_sensor2 = curr_sensor2
@@ -1359,6 +1375,7 @@ def statemachine3(curr_sensor1, curr_sensor2, curr_sensor3, prev_sensor1, prev_s
             # pwm2.ChangeDutyCycle(52)    #right motor
             leftmotor = 52.25
             rightmotor = 47.75
+            print('lost?', curr_sensor1, curr_sensor2, curr_sensor3)
             # return(48,52, prev_sensor1, prev_sensor2, prev_sensor3)
 
 
@@ -1410,8 +1427,11 @@ def statemachinepathbacksecstage(curr_sensor1, curr_sensor2, curr_sensor3, prev_
         else:
             leftmotor = 51
             rightmotor = 49
-            print("lost-lost")
-
+            print('lost - lost?', curr_sensor1, curr_sensor2, curr_sensor3)
+    elif(curr_sensor1 == 1 and curr_sensor2 == 0 and curr_sensor3 == 1 or curr_sensor1 == 1 and curr_sensor2 == 1 and curr_sensor3 == 1):
+        leftmotor = 55
+        rightmotor = 45
+        print('temp foward state')
     else:
         prev_sensor1 = curr_sensor1
         prev_sensor2 = curr_sensor2
@@ -1473,7 +1493,7 @@ def statemachinepathbacksecstage(curr_sensor1, curr_sensor2, curr_sensor3, prev_
             # pwm2.ChangeDutyCycle(52)    #right motor
             leftmotor = 48.5
             rightmotor = 47.5
-            print("reading 111")
+            print('lost?', curr_sensor1, curr_sensor2, curr_sensor3)
             # return(48,52, prev_sensor1, prev_sensor2, prev_sensor3)
 
     return(leftmotor,rightmotor, prev_sensor1, prev_sensor2, prev_sensor3)
