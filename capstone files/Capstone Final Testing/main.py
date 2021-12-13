@@ -232,6 +232,7 @@ widget.show()
 if __name__ == "__main__":
 
     def pathfinding(curbsideposition):
+        time.sleep(1.5)
         counter = curbsideposition
         close_state1 = 0
         close_state2 = 0
@@ -271,7 +272,7 @@ if __name__ == "__main__":
 #             print("Left Sensor = inches={}".format(pwi2))
 #             print("Middle Sensor = inches={}".format(pwi3))
 
-            if pwi <= 10 or pwi2 <= 10 or pwi3 <= 10: #collision avoidance
+            if pwi <= 15 or pwi2 <= 12 or pwi3 <= 10: #collision avoidance
                 leftmotor, rightmotor, ultrasonic_repeat, sleeptime = collision_avoidance(pwi, pwi2, pwi3, ultrasonic_repeat)
                 pwm.ChangeDutyCycle(rightmotor)
                 pwm2.ChangeDutyCycle(leftmotor)
@@ -295,16 +296,16 @@ if __name__ == "__main__":
                 if(close_state1 == 1 and close_state2 == 1 and close_state3 ==1):
                     endloop -= 1
                     redcounter +=1
-                    print("counter value = ", endloop)
-                    print("redcounter value = ", redcounter)
+                    #print("counter value = ", endloop)
+                    #print("redcounter value = ", redcounter)
                 elif(close_state1 & close_state2 == 1) or (close_state1 & close_state3 == 1) or (close_state2 & close_state3 == 1):
                     endloop -=1
                     redcounter +=1
-                    print("counter value = ", endloop)
-                    print("redcounter value = ", redcounter)
-                else:
-                    print("counter value = ", endloop)
-                    print("redcounter value = ", redcounter)
+                    #print("counter value = ", endloop)
+                    #print("redcounter value = ", redcounter)
+                #else:
+                    #print("counter value = ", endloop)
+                    #print("redcounter value = ", redcounter)
             else:
                 if(curr_sensor1 or curr_sensor2 or curr_sensor3 == 1):
                     redcounter -= 1
@@ -344,7 +345,7 @@ if __name__ == "__main__":
                 curr_sensor1, curr_sensor2, curr_sensor3, counter, redcounter = checkstate2(sensor, sensor2, sensor3, counter,redcounter)
 
 
-                leftmotor, rightmotor, prev_sensor1, prev_sensor2, prev_sensor3 = statemachine3(curr_sensor1, curr_sensor2, curr_sensor3, prev_sensor1, prev_sensor2, prev_sensor3)
+                leftmotor, rightmotor, prev_sensor1, prev_sensor2, prev_sensor3 = statemachine2(curr_sensor1, curr_sensor2, curr_sensor3, prev_sensor1, prev_sensor2, prev_sensor3)
 
                 pwm.ChangeDutyCycle(rightmotor)
                 pwm2.ChangeDutyCycle(leftmotor)
@@ -442,6 +443,7 @@ if __name__ == "__main__":
 
     # needs to constantly be checking for obstacles
     def pathfinding_back():
+        time.sleep(2)
         close_state1 = 0
         close_state2 = 0
         close_state3 = 0
@@ -510,54 +512,54 @@ if __name__ == "__main__":
         close_state2 = 0
         close_state3 = 0
         
-        pwm.ChangeDutyCycle(52.25)
-        pwm2.ChangeDutyCycle(47.75) 
-        time.sleep(.5)
+        pwm.ChangeDutyCycle(55)
+        pwm2.ChangeDutyCycle(45) 
+        time.sleep(.4)
         
-        endloop = 1
-        while(endloop != 0):
+        #endloop = 1
+        #while(endloop != 0):
             #time.sleep(SAMPLE_TIME)
-            pw = p.pulse_width()             #ultrasonic
-            pwi = (pw+.5)/147
-            pw2 = p2.pulse_width()           #ultrasonic 2
-            pwi2 = (pw2+.5)/147
-            pw3 = p3.pulse_width()           #ultrasonic 3
-            pwi3 = (pw3+.5)/147
+            #pw = p.pulse_width()             #ultrasonic
+            #pwi = (pw+.5)/147
+            #pw2 = p2.pulse_width()           #ultrasonic 2
+            #pwi2 = (pw2+.5)/147
+            #pw3 = p3.pulse_width()           #ultrasonic 3
+            #pwi3 = (pw3+.5)/147
 
 
-            if pwi <= 10 or pwi2 <= 10 or pwi3 <= 10: #collision avoidance
-                leftmotor, rightmotor, ultrasonic_repeat, sleeptime = collision_avoidance(pwi, pwi2, pwi3, ultrasonic_repeat)
-                pwm.ChangeDutyCycle(rightmotor)
-                pwm2.ChangeDutyCycle(leftmotor)
-                time.sleep(sleeptime)
-            else:
-                ultrasonic_repeat = False
-                curr_sensor1, curr_sensor2, curr_sensor3, close_state1, close_state2, close_state3 = checkstateBlue(sensor, sensor2, sensor3)
+            #if pwi <= 10 or pwi2 <= 10 or pwi3 <= 10: #collision avoidance
+                #leftmotor, rightmotor, ultrasonic_repeat, sleeptime = collision_avoidance(pwi, pwi2, pwi3, ultrasonic_repeat)
+                #pwm.ChangeDutyCycle(rightmotor)
+                #pwm2.ChangeDutyCycle(leftmotor)
+                #time.sleep(sleeptime)
+            #else:
+                #ultrasonic_repeat = False
+                #curr_sensor1, curr_sensor2, curr_sensor3, close_state1, close_state2, close_state3 = checkstateBlue(sensor, sensor2, sensor3)
                 #needs to constantly be pathfinding until reaches endstate
-                leftmotor, rightmotor, prev_sensor1, prev_sensor2, prev_sensor3 = statemachinepathbacksecstage(curr_sensor1, curr_sensor2, curr_sensor3, prev_sensor1, prev_sensor2, prev_sensor3)
-                print("pathfinding back second stage is running")
+                #leftmotor, rightmotor, prev_sensor1, prev_sensor2, prev_sensor3 = statemachinepathbacksecstage(curr_sensor1, curr_sensor2, curr_sensor3, prev_sensor1, prev_sensor2, prev_sensor3)
+                #print("pathfinding back second stage is running")
                 
     #             #Control motor from pathfinding values
-                pwm.ChangeDutyCycle(rightmotor)
-                pwm2.ChangeDutyCycle(leftmotor)
+                #pwm.ChangeDutyCycle(rightmotor)
+                #pwm2.ChangeDutyCycle(leftmotor)
             
-            if(redcounter == 0):
-                if(close_state1 == 1 and close_state2 == 1 and close_state3 ==1):
-                    endloop -= 1
-                    redcounter +=1
-                    print("counter value = ", endloop)
-                    print("redcounter value = ", redcounter)
-                elif(close_state1 & close_state2 == 1) or (close_state1 & close_state3 == 1) or (close_state2 & close_state3 == 1):
-                    endloop -=1
-                    redcounter +=1
-                    print("counter value = ", endloop)
-                    print("redcounter value = ", redcounter)
-                else:
-                    print("counter value = ", endloop)
-                    print("redcounter value = ", redcounter)
-            else:
-                if(curr_sensor1 or curr_sensor2 or curr_sensor3 == 1):
-                    redcounter -= 1
+            #if(redcounter == 0):
+                #if(close_state1 == 1 and close_state2 == 1 and close_state3 ==1):
+                    #endloop -= 1
+                    #redcounter +=1
+                    #print("counter value = ", endloop)
+                    #print("redcounter value = ", redcounter)
+                #elif(close_state1 & close_state2 == 1) or (close_state1 & close_state3 == 1) or (close_state2 & close_state3 == 1):
+                    #endloop -=1
+                    #redcounter +=1
+                    #print("counter value = ", endloop)
+                    #print("redcounter value = ", redcounter)
+                #else:
+                    #print("counter value = ", endloop)
+                    #print("redcounter value = ", redcounter)
+            #else:
+                #if(curr_sensor1 or curr_sensor2 or curr_sensor3 == 1):
+                    #redcounter -= 1
 
                 
     
