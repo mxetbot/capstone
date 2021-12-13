@@ -57,7 +57,7 @@ def checkstate(sensor, sensor2, sensor3):
         redstate1 = 1
         bluestate1 = 0
         greenstate1 = 0
-        if (red1 >= 55):
+        if (red1 >= 70):
             curr_sensor1 = 1
         else:
             curr_sensor1 = 0
@@ -67,7 +67,7 @@ def checkstate(sensor, sensor2, sensor3):
         bluestate1 = 0
         greenstate1 = 1
         curr_sensor1 = 0
-        if green1 >= 31:
+        if green1 >= 37:
             close_state1 = 1
         else:
             close_state1 = 0
@@ -121,7 +121,7 @@ def checkstate(sensor, sensor2, sensor3):
         redstate2 = 1
         bluestate2 = 0
         greenstate2 = 0
-        if (red2 >= 55):
+        if (red2 >= 70):
             curr_sensor2 = 1
         else:
             curr_sensor2 = 0
@@ -131,7 +131,7 @@ def checkstate(sensor, sensor2, sensor3):
         bluestate2 = 0
         greenstate2 = 1           
         curr_sensor2 = 0
-        if green2 >= 31:
+        if green2 >= 37:
             close_state2 = 1
         else:
             close_state2 = 0
@@ -183,7 +183,7 @@ def checkstate(sensor, sensor2, sensor3):
         redstate3 = 1
         bluestate3 = 0
         greenstate3 = 0
-        if (red3 >= 55):
+        if (red3 >= 70):
             curr_sensor3 = 1
         else:
             curr_sensor3 = 0
@@ -193,7 +193,7 @@ def checkstate(sensor, sensor2, sensor3):
         bluestate3 = 0
         greenstate3 = 1
         curr_sensor3 = 0
-        if green3 >= 31:
+        if green3 >= 37:
             close_state3 = 1
         else:
             close_state3 = 0
@@ -236,12 +236,7 @@ def checkstate(sensor, sensor2, sensor3):
         #print("i have no idea what values are being read")
     #("/n")
     print("printing sensor binary state values")
-    ("/n")
-    print(curr_sensor1)
-    ("/n")
-    print(curr_sensor2)
-    ("/n")
-    print(curr_sensor3)
+    print(curr_sensor1, curr_sensor2, curr_sensor3)
     
 
     #time.sleep(5.0)
@@ -292,7 +287,7 @@ def checkstate2(sensor, sensor2, sensor3, counter, redcounter):
         redstate1 = 1
         bluestate1 = 0
         greenstate1 = 0
-        if (red1 >= 55):
+        if (red1 >= 70):
             curr_sensor1 = 1
         else:
             curr_sensor1 = 0
@@ -302,7 +297,7 @@ def checkstate2(sensor, sensor2, sensor3, counter, redcounter):
         bluestate1 = 0
         greenstate1 = 1
         curr_sensor1 = 0
-        if green1 >= 31:
+        if green1 >= 37:
             close_state1 = 1
         else:
             close_state1 = 0
@@ -356,7 +351,7 @@ def checkstate2(sensor, sensor2, sensor3, counter, redcounter):
         redstate2 = 1
         bluestate2 = 0
         greenstate2 = 0
-        if (red2 >= 55):
+        if (red2 >= 70):
             curr_sensor2 = 1
         else:
             curr_sensor2 = 0
@@ -366,7 +361,7 @@ def checkstate2(sensor, sensor2, sensor3, counter, redcounter):
         bluestate2 = 0
         greenstate2 = 1
         curr_sensor2 = 0
-        if green2 >= 31:
+        if green2 >= 37:
             close_state2 = 1
         else:
             close_state2 = 0
@@ -418,7 +413,7 @@ def checkstate2(sensor, sensor2, sensor3, counter, redcounter):
         redstate3 = 1
         bluestate3 = 0
         greenstate3 = 0
-        if (red3 >= 55):
+        if (red3 >= 70):
             curr_sensor3 = 1
         else:
             curr_sensor3 = 0
@@ -428,7 +423,7 @@ def checkstate2(sensor, sensor2, sensor3, counter, redcounter):
         bluestate3 = 0
         greenstate3 = 1
         curr_sensor3 = 0
-        if green3 >= 31:
+        if green3 >= 37:
             close_state3 = 1
         else:
             close_state3 = 0
@@ -471,25 +466,19 @@ def checkstate2(sensor, sensor2, sensor3, counter, redcounter):
         #print("i have no idea what values are being read")
     #("/n")
     print("printing sensor binary state values")
-    ("/n")
-    print(curr_sensor1)
-    ("/n")
-    print(curr_sensor2)
-    ("/n")
-    print(curr_sensor3)
-    #time.sleep(5.0)
+    print(curr_sensor1, curr_sensor2, curr_sensor3)
 
     if(redcounter == 0):
         if(close_state1 == 1 and close_state2 == 1 and close_state3 ==1):
             counter -= 1
             redcounter +=1
-            print("counter value = ", counter)
+            #print("counter value = ", counter)
         elif(close_state1 & close_state2 == 1) or (close_state1 & close_state3 == 1) or (close_state2 & close_state3 == 1):
             counter -=1
             redcounter +=1
-            print("counter value = ", counter)
-        else:
-            print("counter value = ", counter)
+            #print("counter value = ", counter)
+        #else:
+            #print("counter value = ", counter)
     else:
         if(curr_sensor1 or curr_sensor2 or curr_sensor3 == 1):
             redcounter -= 1
@@ -717,12 +706,7 @@ def checkstate3(sensor, sensor2, sensor3):
         #print("i have no idea what values are being read")
     ("/n")
     print("printing sensor binary state values")
-    ("/n")
-    print(curr_sensor1)
-    ("/n")
-    print(curr_sensor2)
-    ("/n")
-    print(curr_sensor3)
+    print(curr_sensor1, curr_sensor2, curr_sensor3)
     #time.sleep(5.0)
     print(blue1, blue2, blue3)
     return(curr_sensor1, curr_sensor2, curr_sensor3, close_state1, close_state2, close_state3) #this manages the middle IR sensor inputs
@@ -974,12 +958,7 @@ def checkstateBlue(sensor, sensor2, sensor3):
         #print("i have no idea what values are being read")
     #("/n")
     print("printing sensor binary state values")
-    ("/n")
-    print(curr_sensor1)
-    ("/n")
-    print(curr_sensor2)
-    ("/n")
-    print(curr_sensor3)
+    print(curr_sensor1, curr_sensor2, curr_sensor3)
     
 
     #time.sleep(5.0)
@@ -1035,7 +1014,7 @@ def statemachine(curr_sensor1, curr_sensor2, curr_sensor3, prev_sensor1, prev_se
         else:
             leftmotor = 55
             rightmotor = 45
-            print('lost-lost?', curr_sensor1, curr_sensor2, curr_sensor3)
+            print('lost-lost?', prev_sensor1, prev_sensor2, prev_sensor3)
     elif(curr_sensor1 == 1 and curr_sensor2 == 0 and curr_sensor3 == 1 or curr_sensor1 == 1 and curr_sensor2 == 1 and curr_sensor3 == 1):
         leftmotor = 55
         rightmotor = 45
@@ -1119,16 +1098,16 @@ def statemachine2(curr_sensor1, curr_sensor2, curr_sensor3, prev_sensor1, prev_s
                 #set pwm values for hard right turn
                 # pwm.ChangeDutyCycle(52)     #left motor
                 # pwm2.ChangeDutyCycle(52)    #right motor
-                leftmotor = 52.5
-                rightmotor = 51
+                leftmotor = 53
+                rightmotor = 0
                 print('hard turn right lost /n')
                 # return(52,52, prev_sensor1, prev_sensor2, prev_sensor3)
             else:
             #values should be set to 011 so we should set pwm values for motors to slight right turn
                 # pwm.ChangeDutyCycle(50)         #left motor
                 # pwm2.ChangeDutyCycle(52)    #right motor
-                leftmotor = 52.5
-                rightmotor = 51
+                leftmotor = 53
+                rightmotor = 49
                 print('slight turn right lost/n')
                 # return(50,52, prev_sensor1, prev_sensor2, prev_sensor3)
 
@@ -1138,26 +1117,26 @@ def statemachine2(curr_sensor1, curr_sensor2, curr_sensor3, prev_sensor1, prev_s
                 #set pwm values for hard left turn
                 # pwm.ChangeDutyCycle(48)     #left motor
                 # pwm2.ChangeDutyCycle(48)    #right motor
-                leftmotor = 48.5
-                rightmotor = 46.5
+                leftmotor = 49
+                rightmotor = 47
                 print('hardleft lost /n')
                 # return(48,48, prev_sensor1, prev_sensor2, prev_sensor3)
             else:
                 #values should be 110 so we should set the pwm values for the motors to turn slightly right
                 # pwm.ChangeDutyCycle(48)     #left motor
                 # pwm2.ChangeDutyCycle(50)    #right motor
-                leftmotor = 49
-                rightmotor = 47.5
+                leftmotor = 0
+                rightmotor = 47
                 print('slightleft lost /n')
                 # return(48,50, prev_sensor1, prev_sensor2, prev_sensor3)
         else:
-            leftmotor = 51
-            rightmotor = 49
-            print('lost-lost?', curr_sensor1, curr_sensor2, curr_sensor3)
+            leftmotor = 52
+            rightmotor = 48
+            print('lost - lost?', prev_sensor1, prev_sensor2, prev_sensor3)
 
     elif(curr_sensor1 == 1 and curr_sensor2 == 0 and curr_sensor3 == 1 or curr_sensor1 == 1 and curr_sensor2 == 1 and curr_sensor3 == 1):
-        leftmotor = 55
-        rightmotor = 45
+        leftmotor = 52.25
+        rightmotor = 47.75
         print('temp foward state')
     else:
         prev_sensor1 = curr_sensor1
@@ -1170,16 +1149,16 @@ def statemachine2(curr_sensor1, curr_sensor2, curr_sensor3, prev_sensor1, prev_s
                 #set pwm values for hard right turn
                 # pwm.ChangeDutyCycle(52)     #left motor
                 # pwm2.ChangeDutyCycle(52)    #right motor
-                leftmotor = 52.25
-                rightmotor = 51
+                leftmotor = 54
+                rightmotor = 0
                 print('hardright \n')
                 # return(52,52, prev_sensor1, prev_sensor2, prev_sensor3)
             else:
                 #values should be set to 011 so we should set pwm values for motors to slight right turn
                 # pwm.ChangeDutyCycle(50)     #left motor
                 # pwm2.ChangeDutyCycle(52)    #right motor
-                leftmotor = 52.75
-                rightmotor = 0
+                leftmotor = 54
+                rightmotor = 49
                 print('slightright \n')
                 # return(50,52, prev_sensor1, prev_sensor2, prev_sensor3)
 
@@ -1190,8 +1169,8 @@ def statemachine2(curr_sensor1, curr_sensor2, curr_sensor3, prev_sensor1, prev_s
                 #set pwm values for hard left turn
                 # pwm.ChangeDutyCycle(48)     #left motor
                 # pwm2.ChangeDutyCycle(48)               #right motor
-                leftmotor = 49
-                rightmotor = 48.5
+                leftmotor = 0
+                rightmotor = 46
                 print('hardleft \n')
                 # return(48,48, prev_sensor1, prev_sensor2, prev_sensor3)
             else:
@@ -1199,7 +1178,7 @@ def statemachine2(curr_sensor1, curr_sensor2, curr_sensor3, prev_sensor1, prev_s
                 # pwm.ChangeDutyCycle(48)     #left motor
                 # pwm2.ChangeDutyCycle(48)               #right motor
                 leftmotor = 51
-                rightmotor = 48.5
+                rightmotor = 46
                 print('slightleft \n')
                 # return(48,50, prev_sensor1, prev_sensor2, prev_sensor3)
 
@@ -1208,8 +1187,8 @@ def statemachine2(curr_sensor1, curr_sensor2, curr_sensor3, prev_sensor1, prev_s
             #set pwm values to move our robot foward
             # pwm.ChangeDutyCycle(48)     #left motor
             # pwm2.ChangeDutyCycle(52)    #right motor
-            leftmotor = 51.25
-            rightmotor = 48.75
+            leftmotor = 52.25
+            rightmotor = 47.75
             print('forwards')
             # return(48,52, prev_sensor1, prev_sensor2, prev_sensor3)
         else:
@@ -1218,10 +1197,11 @@ def statemachine2(curr_sensor1, curr_sensor2, curr_sensor3, prev_sensor1, prev_s
             #set pwm for motors to move straight
             # pwm.ChangeDutyCycle(48)     #left motor
             # pwm2.ChangeDutyCycle(52)    #right motor
-            leftmotor = 51.25
-            rightmotor = 48.75
+            leftmotor = 52.25
+            rightmotor = 47.75
             print('lost?', curr_sensor1, curr_sensor2, curr_sensor3)
             # return(48,52, prev_sensor1, prev_sensor2, prev_sensor3)
+
 
     return(leftmotor,rightmotor, prev_sensor1, prev_sensor2, prev_sensor3)
 
@@ -1234,9 +1214,9 @@ def collision_avoidance(pwi,pwi2,pwi3, ultrasonic_repeat):
     if ultrasonic_repeat == False:
         
         print("reverse, ultrasonic is true")
-        left_motor = 48.5
-        right_motor= 51.5
-        sleeptime = .2
+        left_motor = 45
+        right_motor= 55
+        sleeptime = .7
         if(pwi <= 15):
             print("Right Sensor = inches={}".format(pwi))
         elif(pwi2 <= 15):
@@ -1275,7 +1255,7 @@ def statemachine3(curr_sensor1, curr_sensor2, curr_sensor3, prev_sensor1, prev_s
                 # pwm.ChangeDutyCycle(52)     #left motor
                 # pwm2.ChangeDutyCycle(52)    #right motor
                 leftmotor = 53
-                rightmotor = 0
+                rightmotor = 52
                 print('hard turn right lost /n')
                 # return(52,52, prev_sensor1, prev_sensor2, prev_sensor3)
             else:
@@ -1283,7 +1263,7 @@ def statemachine3(curr_sensor1, curr_sensor2, curr_sensor3, prev_sensor1, prev_s
                 # pwm.ChangeDutyCycle(50)         #left motor
                 # pwm2.ChangeDutyCycle(52)    #right motor
                 leftmotor = 53
-                rightmotor = 49
+                rightmotor = 51
                 print('slight turn right lost/n')
                 # return(50,52, prev_sensor1, prev_sensor2, prev_sensor3)
 
@@ -1293,7 +1273,7 @@ def statemachine3(curr_sensor1, curr_sensor2, curr_sensor3, prev_sensor1, prev_s
                 #set pwm values for hard left turn
                 # pwm.ChangeDutyCycle(48)     #left motor
                 # pwm2.ChangeDutyCycle(48)    #right motor
-                leftmotor = 49.5
+                leftmotor = 49
                 rightmotor = 47
                 print('hardleft lost /n')
                 # return(48,48, prev_sensor1, prev_sensor2, prev_sensor3)
@@ -1301,18 +1281,18 @@ def statemachine3(curr_sensor1, curr_sensor2, curr_sensor3, prev_sensor1, prev_s
                 #values should be 110 so we should set the pwm values for the motors to turn slightly right
                 # pwm.ChangeDutyCycle(48)     #left motor
                 # pwm2.ChangeDutyCycle(50)    #right motor
-                leftmotor = 51
+                leftmotor = 49.5
                 rightmotor = 47
                 print('slightleft lost /n')
                 # return(48,50, prev_sensor1, prev_sensor2, prev_sensor3)
         else:
             leftmotor = 52
             rightmotor = 48
-            print('lost - lost?', curr_sensor1, curr_sensor2, curr_sensor3)
+            print('lost - lost?', prev_sensor1, prev_sensor2, prev_sensor3)
 
     elif(curr_sensor1 == 1 and curr_sensor2 == 0 and curr_sensor3 == 1 or curr_sensor1 == 1 and curr_sensor2 == 1 and curr_sensor3 == 1):
-        leftmotor = 55
-        rightmotor = 45
+        leftmotor = 52.25
+        rightmotor = 47.75
         print('temp foward state')
     else:
         prev_sensor1 = curr_sensor1
@@ -1325,16 +1305,16 @@ def statemachine3(curr_sensor1, curr_sensor2, curr_sensor3, prev_sensor1, prev_s
                 #set pwm values for hard right turn
                 # pwm.ChangeDutyCycle(52)     #left motor
                 # pwm2.ChangeDutyCycle(52)    #right motor
-                leftmotor = 56
-                rightmotor = 0
+                leftmotor = 54
+                rightmotor = 52
                 print('hardright \n')
                 # return(52,52, prev_sensor1, prev_sensor2, prev_sensor3)
             else:
                 #values should be set to 011 so we should set pwm values for motors to slight right turn
                 # pwm.ChangeDutyCycle(50)     #left motor
                 # pwm2.ChangeDutyCycle(52)    #right motor
-                leftmotor = 55
-                rightmotor = 49
+                leftmotor = 54
+                rightmotor = 51
                 print('slightright \n')
                 # return(50,52, prev_sensor1, prev_sensor2, prev_sensor3)
 
@@ -1345,7 +1325,7 @@ def statemachine3(curr_sensor1, curr_sensor2, curr_sensor3, prev_sensor1, prev_s
                 #set pwm values for hard left turn
                 # pwm.ChangeDutyCycle(48)     #left motor
                 # pwm2.ChangeDutyCycle(48)               #right motor
-                leftmotor = 0
+                leftmotor = 48
                 rightmotor = 46
                 print('hardleft \n')
                 # return(48,48, prev_sensor1, prev_sensor2, prev_sensor3)
@@ -1353,7 +1333,7 @@ def statemachine3(curr_sensor1, curr_sensor2, curr_sensor3, prev_sensor1, prev_s
             #values should be 110 so we should set the pwm values for the motors to turn slightly left
                 # pwm.ChangeDutyCycle(48)     #left motor
                 # pwm2.ChangeDutyCycle(48)               #right motor
-                leftmotor = 51
+                leftmotor = 48
                 rightmotor = 45
                 print('slightleft \n')
                 # return(48,50, prev_sensor1, prev_sensor2, prev_sensor3)
@@ -1393,8 +1373,8 @@ def statemachinepathbacksecstage(curr_sensor1, curr_sensor2, curr_sensor3, prev_
                 #set pwm values for hard right turn
                 # pwm.ChangeDutyCycle(52)     #left motor
                 # pwm2.ChangeDutyCycle(52)    #right motor
-                leftmotor = 52.5
-                rightmotor = 51
+                leftmotor = 53.5
+                rightmotor = 52.5
                 print('hard turn right lost /n')
                 # return(52,52, prev_sensor1, prev_sensor2, prev_sensor3)
             else:
@@ -1412,25 +1392,25 @@ def statemachinepathbacksecstage(curr_sensor1, curr_sensor2, curr_sensor3, prev_
                 #set pwm values for hard left turn
                 # pwm.ChangeDutyCycle(48)     #left motor
                 # pwm2.ChangeDutyCycle(48)    #right motor
-                leftmotor = 49
-                rightmotor = 47.75
+                leftmotor = 47
+                rightmotor = 47
                 print('hardleft lost /n')
                 # return(48,48, prev_sensor1, prev_sensor2, prev_sensor3)
             else:
                 #values should be 110 so we should set the pwm values for the motors to turn slightly right
                 # pwm.ChangeDutyCycle(48)     #left motor
                 # pwm2.ChangeDutyCycle(50)    #right motor
-                leftmotor = 49
-                rightmotor = 48
+                leftmotor = 48
+                rightmotor = 47
                 print('slightleft lost /n')
                 # return(48,50, prev_sensor1, prev_sensor2, prev_sensor3)
         else:
             leftmotor = 51
             rightmotor = 49
-            print('lost - lost?', curr_sensor1, curr_sensor2, curr_sensor3)
+            print('lost - lost?', prev_sensor1, prev_sensor2, prev_sensor3)
     elif(curr_sensor1 == 1 and curr_sensor2 == 0 and curr_sensor3 == 1 or curr_sensor1 == 1 and curr_sensor2 == 1 and curr_sensor3 == 1):
-        leftmotor = 55
-        rightmotor = 45
+        leftmotor = 52.5 
+        rightmotor = 47.5
         print('temp foward state')
     else:
         prev_sensor1 = curr_sensor1
@@ -1463,7 +1443,7 @@ def statemachinepathbacksecstage(curr_sensor1, curr_sensor2, curr_sensor3, prev_
                 #set pwm values for hard left turn
                 # pwm.ChangeDutyCycle(48)     #left motor
                 # pwm2.ChangeDutyCycle(48)               #right motor
-                leftmotor = 49.5
+                leftmotor = 48.5
                 rightmotor = 47.75
                 print('hardleft \n')
                 # return(48,48, prev_sensor1, prev_sensor2, prev_sensor3)
@@ -1471,7 +1451,7 @@ def statemachinepathbacksecstage(curr_sensor1, curr_sensor2, curr_sensor3, prev_
             #values should be 110 so we should set the pwm values for the motors to turn slightly left
                 # pwm.ChangeDutyCycle(48)     #left motor
                 # pwm2.ChangeDutyCycle(48)               #right motor
-                leftmotor = 0
+                leftmotor = 49.25
                 rightmotor = 48
                 print('slightleft \n')
                 # return(48,50, prev_sensor1, prev_sensor2, prev_sensor3)
